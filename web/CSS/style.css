@@ -1,0 +1,17 @@
+#nav{
+	background-color:#d1e2ff; 
+	padding: 15px;
+}
+#nav h1{
+	display:inline-block; 
+	height:40px;
+}
+#menu{
+	display:inline-block;
+	float:right;
+	height:40px;
+}
+#menu li{
+	display:inline-block;
+	line-height:40px;
+}

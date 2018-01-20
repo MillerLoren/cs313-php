@@ -1,6 +1,6 @@
 <?php require($DOCUMENT_ROOT . "Includes/header.php");?>
-  <meta name="description" content="The landing page of my school project. You can find assignments and source code on this page and others.">
-  <title>Home</title>
+  <meta name="description" content="Assignments page where you can view the assignments.">
+  <title>Assignments</title>
 </head>
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
