@@ -1,17 +1,87 @@
+/*Navigation*/
 #nav{
 	background-color:#d1e2ff; 
-	padding: 15px;
+	margin: 0 0 0 0;
+	height:80px;
 }
 #nav h1{
-	display:inline-block; 
-	height:40px;
+	display:inline-block;
+	padding: 15px;
+	margin:0 0 0 0;
 }
 #menu{
-	display:inline-block;
 	float:right;
-	height:40px;
+	margin:0 0 0 0;
 }
 #menu li{
 	display:inline-block;
-	line-height:40px;
+	line-height:50px;
+	padding: 15px;
+	margin:0 0 0 0;
+}
+#menu li a{
+	line-height:50px;
+	width:100%;
+}
+#menu li:hover{
+	background-color:#51FFF6;
+	color:#000000;
+}
+#dropBtn{
+	float:right;
+	line-height:70px;
+	margin-right:10px;
+}
+#dropBtn img{
+	height:50px;
+	width:50px;
+}
+.hide{
+	display:none;
+}
+.show{
+	display:inline-block;
+}
+/*Home Page Content*/
+#content{
+	width:80%;
+	max-width:1000px;
+	margin:auto;
+}
+#content h2{
+	padding:15px;
+}
+#content p{
+	width:100%;
+}
+.contentImg1{
+	width:30%;
+	padding-right:15px;
+}
+@media (max-width: 700px) {
+    #menu{
+		margin-top:80px;
+		width:100%;
+		background:white;
+		z-index:9999;
+		position:absolute;
+	}
+	#menu li{
+		width:100%;
+	}
+	#nav{
+		position:fixed;
+		width:100%;
+	}
+	#content{
+		padding-top:100px;
+		width:95%;
+		
+	}
+	.hide{
+		display:none;
+	}
+	.show{
+		display:inline-block;
+	}
 }
