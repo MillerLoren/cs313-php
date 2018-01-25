@@ -5,6 +5,15 @@
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
 	<div id="content">
-		<h2>Coming Soon</h2>
+		<table>
+			<tr>
+				<th>Assignment</th>
+				<th>Week</th>
+			</tr>
+			<tr>
+				<td><a href="ponder03.php">Shopping Cart</a></td>
+				<td>Week 03</td>
+			</tr>
+		</table>
 	</div>
 <?php require($DOCUMENT_ROOT . "Includes/footer.php");?>
