@@ -27,3 +27,6 @@ function menu(){
 		$(ul).addClass('hide');
 	}
 }
+$( ".shopItemButton" ).click(function() {
+  alert( "Handler for .click() called." );
+});

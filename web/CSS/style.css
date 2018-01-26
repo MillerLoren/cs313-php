@@ -84,9 +84,11 @@
     display: inline-block;
 	font-size: 16px;
 	position: absolute;
+	bottom: 15px;
 }
 .itemInfo{
 	padding: 5px;
+	overflow-y: scroll;
 }
 @media (max-width: 700px) {
     #menu{
