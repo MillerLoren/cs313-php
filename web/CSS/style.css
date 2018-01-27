@@ -74,6 +74,9 @@
     -moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+.shopItem img{
+	height: 50%;
+}
 .shopItem button{
     background-color: rgb(0, 204, 255);
     border: none;
