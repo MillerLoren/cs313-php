@@ -4,32 +4,44 @@
 </head>
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
+<?php 
+
+ // starting the session
+ session_start();
+ 
+ if (isset($_POST['Submit'])) { 
+  $_SESSION['viewCart'] = $_POST['viewCart'];
+  }
+?> 
+<form id="cartForm" action="cart.php" method="POST">
+  <input name="viewCart" id="viewCart" type="hidden" value="" />
+  <input type="submit" name="Submit" value="View Cart" />
+</form>
     <div id="content">
       <div id="grid">
-        <div class="shopItem">
-          <img src="Images/ark.png" />
-          <br />
+        <div id="1" class="shopItem">
+          <div class="shopImage"><img src="Images/ark.png" /></div>
           <div class="itemInfo">
-            <p>Price: $59.99</p>
-            <p>Quantity: </p> <form><input type="number" /></form>
+            <p>Price: $39.99<br />
+            Quantity: <input class="quantity" type="number" value="1" /></p>
           </div>
-          <button class="shopItemButton">Add To Cart</button>
+          <input type="submit" class="shopItemButton" value="Add To Cart" onclick="addToCart(1)"/>
         </div>
-        <div class="shopItem">
-          <img src="Images/Overwatch.jpg" />
+        <div id="2" class="shopItem">
+          <div class="shopImage"><img src="Images/Overwatch.jpg" /></div>
           <div class="itemInfo">
-            <p>Price: $59.99</p>
-            <p>Quantity: </p> <form><input type="number" /></form>
+            <p>Price: $59.99<br />
+            Quantity: <input class="quantity" type="number" value="1" /></p>
           </div>
-          <button class="shopItemButton">Add To Cart</button>
+          <input type="submit" class="shopItemButton" value="Add To Cart" onclick="addToCart(2)"/>
         </div>
-        <div class="shopItem">
-          <img src="Images/rocketleague.jpeg" />
+        <div id="3" class="shopItem">
+          <div class="shopImage"><img src="Images/rocketleague.jpeg" /></div>
           <div class="itemInfo">
-            <p>Price: $59.99</p>
-            <p>Quantity: </p> <form><input type="number" /></form>
+            <p>Price: $29.99<br />
+            Quantity: <input class="quantity" type="number" value="1" /></p>
           </div>
-          <button class="shopItemButton">Add To Cart</button>
+          <input type="submit" class="shopItemButton" value="Add To Cart" onclick="addToCart(3)"/>
         </div>
       </div>
     </div>
