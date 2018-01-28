@@ -9,13 +9,15 @@
  // starting the session
  session_start();
  
- if($_SERVER['REQUEST_METHOD']=='POST')
- {
-  $viewCart = $_POST['viewCart'];
-  $_SESSION['viewCart']= $viewCart;
- } 
+ 
 ?> 
 <strong><?php echo $_SESSION['viewCart'];?></strong>
 <strong><?php echo $_REQUEST['viewCart'];?></strong>
+<script>
+  var cart = <?php echo $_SESSION['viewCart'];?>;
+  console.log("Cart", cart);
+  var parsed = JSON.parse(cart);
+  console.log("Parsed", parsed);
+</script>
 <?php unset($_SESSION['viewCart']);?>
 <?php require($DOCUMENT_ROOT . "Includes/footer.php");?>

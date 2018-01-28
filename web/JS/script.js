@@ -33,6 +33,9 @@ function addToCart(item){
 	console.log("Item Number", item);
 	var div = document.getElementById(item);
 	var hidden = document.getElementById("viewCart");
+	var hidden1 = document.getElementById("viewCart1");
+	var hidden2 = document.getElementById("viewCart2");
+	var hidden3 = document.getElementById("viewCart3");
 	var quantity = document.getElementsByClassName("quantity")[item - 1].value;
 	console.log("Quantity", quantity);
 	if(quantity > 0 && quantity != "" && quantity != 0){
@@ -41,14 +44,20 @@ function addToCart(item){
 			case 1:
 				var tempArr = {Game:"Ark: Survival Evolved", Price:"$39.99", Quantity:quantity};
 				arr[0] = tempArr;
+				hidden1.value = "";
+				hidden1.value = JSON.stringify(arr);
 				break;
 			case 2:
 				var tempArr = {Game:"Overwatch", Price:"$59.99", Quantity:quantity};
 				arr[1] = tempArr;
+				hidden2.value = "";
+				hidden2.value = JSON.stringify(arr);
 				break;
 			case 3:
 				var tempArr = {Game:"RocketLeague", Price:"$29.99", Quantity:quantity};
 				arr[2] = tempArr;
+				hidden3.value = "";
+				hidden3.value = JSON.stringify(arr);
 				break;
 		}
 	}
