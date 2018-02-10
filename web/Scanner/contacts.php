@@ -1,4 +1,4 @@
-<?php require "/dbconnect.php";
+<?php require "dbconnect.php";
 $db = get_db();
 ?>
 <?php require($DOCUMENT_ROOT . "Includes/header.php");?>

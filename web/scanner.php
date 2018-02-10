@@ -1,4 +1,4 @@
-<?php require "/Scanner/dbconnect.php";
+<?php require "Scanner/dbconnect.php";
 $db = get_db();
 ?>
 <?php require($DOCUMENT_ROOT . "Includes/header.php");?>
