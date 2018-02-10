@@ -4,7 +4,7 @@ function get_db() {
 	try {
 		$dbUrl = getenv('DATABASE_URL');
 		if (!isset($dbUrl) || empty($dbUrl)) {
-			$dbUrl = "postgres://nhginpxrxgjsmt:836628be640b9af67c81fbf5a78a782f432ae04f0014d4f8cf41b0e44eab95b9@ec2-54-227-244-122.compute-1.amazonaws.com:5432/d6mp7juer14cs5";
+			$dbUrl = "postgres://nhginpxrxgjsmt:836628be640b9af67c81fbf5a78a782f432ae04f0014d4f8cf41b0e44eab95b9@localhost:5432/d6mp7juer14cs5";
 		}
 		$dbopts = parse_url($dbUrl);
 		$dbHost = $dbopts["host"];
