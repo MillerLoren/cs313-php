@@ -5,7 +5,7 @@
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
 	<div id="content">
-		<table>
+		<table id="table">
 			<tr>
 				<th>Assignment</th>
 				<th>Week</th>
@@ -14,6 +14,10 @@
 				<td><a href="ponder03.php">Shopping Cart</a></td>
 				<td>Week 03</td>
 			</tr>
+			<tr>
+				<td><a href="scanner.php">Scanner Project</a></td>
+				<td>Week 05 - Present</td>
+			</td>
 		</table>
 	</div>
 <?php require($DOCUMENT_ROOT . "Includes/footer.php");?>

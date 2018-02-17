@@ -1,6 +1,12 @@
 <?php require "dbconnect.php";
 $db = get_db();
 ?>
+<?php 
+    session_start();
+    if($_SESSION['sess_user'] === NULL){
+        header("Location: ../scanner.php");
+    }
+?>
 <?php require($DOCUMENT_ROOT . "Includes/header.php");?>
   <meta name="description" content="These are all of the contacts for this user.">
   <title>Leads Scanner - Contacts</title>

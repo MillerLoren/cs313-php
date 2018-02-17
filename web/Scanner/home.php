@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if($_SESSION['sess_user'] === NULL){
+        header("Location: ../scanner.php");
+    }
+?>
 <?php require($DOCUMENT_ROOT . "Includes/header.php");?>
   <meta name="description" content="Please login to view your leads.">
   <title>Leads Scanner - Login</title>

@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if($_SESSION['sess_user'] === NULL){
+    }else{
+      header("Location: Scanner/home.php");
+    }
+?>
 <?php require "Scanner/dbconnect.php";
 $db = get_db();
 ?>
@@ -8,10 +15,14 @@ $db = get_db();
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
 <div id="content">
-  <p>Test information: <br/>Username = test_user1, Password = password1<br/> Username = test_user2, Password = password2</p>
+  <p>Test information: 
+  <br/>Username = test_user1, Password = password1
+  <br/>Username = test_user2, Password = password2
+  <br/>Register your own account: <a href="Scanner/register.php">Register</a>
+  </p>
   <form action="" method="POST">  
-    Username: <input type="text" name="user"><br />  
-    Password: <input type="password" name="pass"><br />   
+    <label>Username:</label><input type="text" name="user"><br />  
+    <label>Password:</label><input type="password" name="pass"><br />   
 <?php  
 if(isset($_POST["submit"]))
 {  
@@ -20,14 +31,14 @@ if(isset($_POST["submit"]))
       $user=$_POST['user'];  
       $pass=$_POST['pass'];  
     
-      $statement = $db->prepare("SELECT login_name, user_name, user_id, password FROM public.users WHERE login_name='".$user."' AND password='".$pass."'");
+      $statement = $db->prepare("SELECT login_name, user_name, id, password FROM public.users WHERE login_name='".$user."' AND password='".$pass."'");
       $statement->execute();
 
       while ($row = $statement->fetch(PDO::FETCH_ASSOC))
       {
         $dbusername=$row['login_name'];
         $dbpassword=$row['password'];
-        $dbsessionid=$row['user_id'];
+        $dbsessionid=$row['id'];
       }
 
       if($user == $dbusername && $pass == $dbpassword)  
