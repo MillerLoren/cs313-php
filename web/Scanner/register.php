@@ -24,6 +24,12 @@ function gen(){
         gen();
     }
     return $num;
+}function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 }
 if(isset($_POST["submit"]))
 {  
@@ -31,15 +37,20 @@ if(isset($_POST["submit"]))
   {  
     $user=$_POST['user'];
     $name=$_POST['name'];  
-    $pass=$_POST['pass'];  
+    $pass=$_POST['pass'];
+    $bool1= 0;
+    $bool2= 1;
     $newID = gen();
     $statement = $db->prepare("SELECT * FROM public.users WHERE login_name='".$user."'");
     $statement->execute();
     $numrows=$statement->rowCount(); 
     if($numrows == 0){
         $sql = "INSERT INTO public.users(login_name,user_name,password,id) VALUES('$user','$name','$pass', '$newID')";
+        debug_to_console("Sql Created");
         $insert = $db->prepare($sql);
+        debug_to_console("Sql prepared");
         $insert->execute();
+        debug_to_console("Sql executed");
         if($insert) {
             echo "Account Successfully Created."; 
             session_start();  

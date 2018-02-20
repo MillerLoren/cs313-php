@@ -14,26 +14,16 @@ $db = get_db();
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
 <div id="content">
-  <form action="" method="POST">
       <?php echo $_SESSION['sess_user']; ?><a href="signout.php">Logout</a>
-      <table id="table" class="settingsTable">
-        <tr><td>Allow editing of contacts?</td><td><label class="switch"><input type="checkbox" value="allowEdits"><span class="slider round"></span></label></td></tr>
-        <tr><td></td><td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td></tr>
-        <tr><td></td><td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td></tr>
-        <tr><td></td><td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td></tr>
-      </table>
-      <input style="background-color:red;color:black;" type="submit" name="delete" value="Delete Account"/>
-      <?php
-        function debug_to_console( $data ) {
-            $output = $data;
-            if ( is_array( $output ) )
-                $output = implode( ',', $output);
-
-            echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
-        }
+      <?php      
+        $id=$_SESSION['sess_user'];
+        $mainQuery = "SELECT * FROM public.users WHERE id='$id' LIMIT 1";
+        $main = $db->prepare($mainQuery);
+        $main->execute();
+        $row=$main->fetch();
+        
         if(isset($_POST["delete"]))
         {  
-            $id=$_SESSION['sess_user'];
             $sql = "DELETE FROM public.leads WHERE user_id='$id'";
             $sql2 = "DELETE FROM public.users WHERE id='$id'";
             $result = $db->prepare($sql);
@@ -55,6 +45,14 @@ $db = get_db();
         header("Location: ../scanner.php");
         }
       ?>
+  <form action="" method="POST">
+      <table id="table" class="settingsTable">
+        <tr><td>Allow editing of contacts?</td><td><label class="switch"><input type="checkbox" name="allowEdits" <?php if($row['settings_edit']){echo "checked";};?>><span class="slider round"></span></label></td></tr>
+        <tr><td>Show your information on contacts page.</td><td><label class="switch"><input type="checkbox" name="showInfo" <?php if($row['settings_showInfo']){echo "checked";};?>><span class="slider round"></span></label></td></tr>
+        <tr><td></td><td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td></tr>
+        <tr><td></td><td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td></tr>
+      </table>
+      <input style="background-color:red;color:black;" type="submit" name="delete" value="Delete Account"/>
  </form>
 </div>
 <?php require($DOCUMENT_ROOT . "Includes/footer.php");?>

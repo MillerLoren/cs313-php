@@ -1,7 +1,66 @@
 $(window).on('resize', toggle);
 $(window).on('load', toggle);
+$(".edit").on('click',function() {
+	editContact(this.closest( "tr" ));
+});
+$(".add").on('click',function() {
+	addContact();
+});
+$(".trash").on('click',function() {
+	deleteContact(this.closest( "tr" ));
+});
 var arr = [];
 var cartCount = 0;
+function editContact(tr){
+	var max = tr.childNodes.length;
+	for(var i = 0; i < max; i++){
+		var text = tr.childNodes[i].innerHTML;
+		var td = $("<td></td>");
+		switch(i){
+			case 0:
+				var input = "<input name='isNew' type='hidden' value='0'/><input name='num' type='hidden' value='" + text + "'/>" + text;
+			break;
+			case 1:
+				var input = "<input name='name' type='text' value='" + text + "'/>";
+			break;
+			case 2:
+				var input = "<input name='email' type='text' value='" + text + "'/>";
+			break;
+			case 3:
+				var input = "<input name='phone' type='text' value='" + text + "'/>";
+			break;
+			case 4:
+				var input = "<input name='company' type='text' value='" + text + "'/>";
+			break;
+			case 5:
+				var input = "<input name='title' type='text' value='" + text + "'/>";
+			break;
+			case 6:
+				var input = "<input type='submit' class='check' name='update' />/<img class='cancel' onclick='cancelEdit()' src='../../Images/cancel.png' />"
+			break;
+		}
+		tr.childNodes[i].innerHTML = input;
+		$(".edit").remove();
+		$(".trash").remove();
+		$(".add").remove();
+	}
+}
+function cancelEdit(){
+	location.reload();
+}
+function addContact(){
+	var table = $("#contactsTable tr:last");
+	var num = $("#contactsTable tr").length;
+	var tr = "<tr><td><input name='isNew' type='hidden' value='1'/><input name='num' type='hidden' value='" + num + "'/>" + num + "</td><td><input name='name' type='text' value=''></td><td><input name='email' type='text' value=''></td><td><input name='phone' type='text' value=''></td><td><input name='company' type='text' value=''></td><td><input name='title' type='text' value=''></td><td><input type='submit' class='check' name='add' src='../../Images/check.png'>/<img class='cancel' onclick='cancelEdit()' src='../../Images/cancel.png'></td></tr>";
+	table.after(tr);
+	$(".edit").remove();
+	$(".trash").remove();
+	$(".add").remove();
+}
+function deleteContact(tr){
+	tr.childNodes[0].innerHTML = "<input name='isNew' type='hidden' value='FALSE'/><input name='num' type='hidden' value='" + tr.childNodes[0].innerHTML + "'/>" + tr.childNodes[0].innerHTML;
+
+}
 function toggle(){
 	var win = $(this); //this = window
 	var ul = document.getElementById("menu");
