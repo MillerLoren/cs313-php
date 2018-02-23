@@ -14,7 +14,7 @@ $db = get_db();
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
 <div id="content">
-      <?php echo $_SESSION['sess_user']; ?><a href="signout.php">Logout</a>
+      
       <?php      
         $id=$_SESSION['sess_user'];
         $mainQuery = "SELECT * FROM public.users WHERE id='$id' LIMIT 1";
@@ -45,14 +45,8 @@ $db = get_db();
         header("Location: ../scanner.php");
         }
       ?>
-  <form action="" method="POST">
-      <table id="table" class="settingsTable">
-        <tr><td>Allow editing of contacts?</td><td><label class="switch"><input type="checkbox" name="allowEdits" <?php if($row['settings_edit']){echo "checked";};?>><span class="slider round"></span></label></td></tr>
-        <tr><td>Show your information on contacts page.</td><td><label class="switch"><input type="checkbox" name="showInfo" <?php if($row['settings_showInfo']){echo "checked";};?>><span class="slider round"></span></label></td></tr>
-        <tr><td></td><td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td></tr>
-        <tr><td></td><td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td></tr>
-      </table>
-      <input style="background-color:red;color:black;" type="submit" name="delete" value="Delete Account"/>
+  <form id="settingsForm" action="" method="POST">
+    <a class="logout" href="signout.php">Logout</a> OR <input style="background-color:red;color:black;display:inline-block" type="submit" name="delete" value="Delete Account"/>
  </form>
 </div>
 <?php require($DOCUMENT_ROOT . "Includes/footer.php");?>

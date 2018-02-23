@@ -2,7 +2,7 @@
     session_start();
     if($_SESSION['sess_user'] === NULL){
     }else{
-      header("Location: Scanner/home.php");
+      header("Location: Scanner/contacts.php");
     }
 ?>
 <?php require "Scanner/dbconnect.php";

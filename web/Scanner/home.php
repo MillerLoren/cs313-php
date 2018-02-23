@@ -2,6 +2,8 @@
     session_start();
     if($_SESSION['sess_user'] === NULL){
         header("Location: ../scanner.php");
+    }else{
+        header("Location: contacts.php");
     }
 ?>
 <?php require($DOCUMENT_ROOT . "Includes/header.php");?>
@@ -11,12 +13,6 @@
 <body>
 <?php require($DOCUMENT_ROOT . "Includes/nav.php");?>
     <div id="content">
-        <h2>Please scan QR code or Bar Code</h2>
-        <div id="camera">
-            <form action="" method="post" enctype="multipart/form-data">  
-                <input type="file" name="uploadedfile" accept="image/*" capture="camera" />  
-                <input type="submit" value="Upload">  
-            </form>
-        </div>
+        
     </div>
 <?php require($DOCUMENT_ROOT . "Includes/footer.php");?>

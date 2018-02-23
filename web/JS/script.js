@@ -14,14 +14,14 @@ var cartCount = 0;
 function editContact(tr){
 	var max = tr.childNodes.length;
 	for(var i = 0; i < max; i++){
-		var text = tr.childNodes[i].innerHTML;
+		var text = tr.childNodes[i].innerText || tr.childNodes[i].textContent;
 		var td = $("<td></td>");
 		switch(i){
 			case 0:
-				var input = "<input name='isNew' type='hidden' value='0'/><input name='num' type='hidden' value='" + text + "'/>" + text;
+				var input = text;
 			break;
 			case 1:
-				var input = "<input name='name' type='text' value='" + text + "'/>";
+				var input = "<input name='num' type='hidden' value='" + tr.childNodes[1].childNodes[0].value + "'/><input name='name' type='text' value='" + text + "'/>";
 			break;
 			case 2:
 				var input = "<input name='email' type='text' value='" + text + "'/>";
@@ -51,14 +51,14 @@ function cancelEdit(){
 function addContact(){
 	var table = $("#contactsTable tr:last");
 	var num = $("#contactsTable tr").length;
-	var tr = "<tr><td><input name='isNew' type='hidden' value='1'/><input name='num' type='hidden' value='" + num + "'/>" + num + "</td><td><input name='name' type='text' value=''></td><td><input name='email' type='text' value=''></td><td><input name='phone' type='text' value=''></td><td><input name='company' type='text' value=''></td><td><input name='title' type='text' value=''></td><td><input type='submit' class='check' name='add' src='../../Images/check.png'>/<img class='cancel' onclick='cancelEdit()' src='../../Images/cancel.png'></td></tr>";
+	var tr = "<tr><td>" + num + "</td><td><input name='name' type='text' value=''></td><td><input name='email' type='text' value=''></td><td><input name='phone' type='text' value=''></td><td><input name='company' type='text' value=''></td><td><input name='title' type='text' value=''></td><td><input type='submit' class='check' name='add' src='../../Images/check.png'>/<img class='cancel' onclick='cancelEdit()' src='../../Images/cancel.png'></td></tr>";
 	table.after(tr);
 	$(".edit").remove();
 	$(".trash").remove();
 	$(".add").remove();
 }
 function deleteContact(tr){
-	tr.childNodes[0].innerHTML = "<input name='isNew' type='hidden' value='FALSE'/><input name='num' type='hidden' value='" + tr.childNodes[0].innerHTML + "'/>" + tr.childNodes[0].innerHTML;
+	tr.childNodes[0].innerHTML = "<input name='num' type='hidden' value='" + tr.childNodes[1].childNodes[0].value + "'/>" + tr.childNodes[0].innerHTML;
 
 }
 function toggle(){

@@ -42,12 +42,15 @@ $db = get_db();
             $countRow = 1;
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
-              echo '<tr><td>'.$row['num'].'</td><td>'.$row['name'].'</td><td>'. $row['email'] . '</td><td>' . $row['phone'] . '</td><td>' . $row['company'] . '</td><td>' . $row['title'] . '</td><td><img class="edit" src="../../Images/edit.png" />/<input type="submit" name="delete" class="trash"/></td></tr>';
+              echo '<tr><td>'.$countRow.'</td><td><input type="hidden" name="numTemp" value="'.$row['num'].'"/>'.$row['name'].'</td><td>'. $row['email'] . '</td><td>' . $row['phone'] . '</td><td>' . $row['company'] . '</td><td>' . $row['title'] . '</td><td><img class="edit" src="../../Images/edit.png" />/<input type="submit" name="delete" class="trash"/></td></tr>';
               $countRow = $countRow + 1;
             }
+            $statement = NULL;
+            $db = NULL;
           ?>
         </table>
         <?php
+          $db = get_db();
           if(isset($_POST["update"]))
           {
             $name = $_POST['name'];
@@ -57,15 +60,12 @@ $db = get_db();
             $title = $_POST['title'];
             $temp = $_POST['num'];
             $num = (int)$temp;
-            $temp2 = $_POST['isNew'];
-            $isNew = (bool)$temp2;
-            debug_to_console('Updating');
-            $sql="UPDATE public.leads SET name='".$name."', email='".$email."', phone='".$phone."', company='".$company."', title='".$title."', user_id='".$id."', num='".$num."' WHERE user_id='".$id."' AND num='".$num."'";
+            $sql="UPDATE public.leads SET name='$name', email='$email', phone='$phone', company='$company', title='$title', user_id='$id' WHERE user_id='$id' AND num='$num'";
             $update = $db->prepare($sql);
-            debug_to_console('Updating: Prepared');
             $update->execute();
-            debug_to_console("Update Updated");
-            //header("Location: contacts.php");
+            $update = NULL;
+            $db = NULL;
+            header("Location: contacts.php");
             }
             if(isset($_POST["add"])){
               $name = $_POST['name'];
@@ -77,13 +77,13 @@ $db = get_db();
               $num = (int)$temp;
               $temp2 = $_POST['isNew'];
               $isNew = (bool)$temp2;
-              debug_to_console('isNew' . $isNew);
-              debug_to_console('Insert');
-              $firstSql = "INSERT INTO public.leads(name, user_id, num, phone, email, company, title) VALUES ('$name', '$id', '$num', '$phone', '$email', '$company', '$title')";
+              $firstSql = "INSERT INTO public.leads(name, user_id, phone, email, company, title) VALUES ('$name', '$id', '$phone', '$email', '$company', '$title')";
               $insert = $db->prepare($firstSql);
               $insert->execute();
-              debug_to_console("Insert Updated");
-              //header("Location: contacts.php");
+              $firstSql = NULL;
+              $db = NULL;
+              header("Location: contacts.php");
+              
             }
           if(isset($_POST["delete"]))
           {   
@@ -91,11 +91,11 @@ $db = get_db();
             $temp = $_POST['num'];
             $num = (int)$temp;
             debug_to_console('Num ' . $num);
-            $sql2 = "DELETE FROM public.leads WHERE user_id='$id' AND num=$num";
-            $delete = $db->prepare($sql);
-            debug_to_console('Delete Prepared');
+            $sql2 = "DELETE FROM public.leads WHERE user_id='$id' AND num='$num'";
+            $delete = $db->prepare($sql2);
             $delete->execute();
-            debug_to_console('Delete Execute');
+            $delete = NULL;
+            $db = NULL;
             header("Location: contacts.php");
           }
         ?>

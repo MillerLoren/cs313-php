@@ -68,7 +68,8 @@ if(isset($_POST["submit"]))
     }
 }
 ?>   
-  <input type="submit" value="Register" name="submit" />  
+  <a href="../scanner.php" class="logout">Cancel</a><input style="display:inline-block;margin-left:15px;" type="submit" value="Register" name="submit" />
+    
  </form>  
 </div>
 <?php require($DOCUMENT_ROOT . "Includes/footer.php");?>

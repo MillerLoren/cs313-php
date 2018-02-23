@@ -91,6 +91,7 @@ input[type="submit"]{
 	margin: auto;
 	font-size: 16px;
 	bottom: 15px;
+	width: 175px;
 }
 .itemInfo{
 	padding: 5px;
@@ -136,6 +137,7 @@ input[type="submit"]{
 #contactsTable td, #contactsTable th {
     border: 1px solid rgb(221, 221, 221);
 	padding: 8px;
+	max-width: 150px;
 	text-align: center;
 }
 #contactsTable th {
@@ -154,23 +156,45 @@ input[type="submit"]{
 	margin-top: 15px;
 }
 /*Scanner - Settings*/
-/*Contacts*/
+.logout{
+    background-color: rgb(0, 204, 255);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+	display: inline-block;
+	margin: auto;
+	font-size: 16px;
+	bottom: 15px;
+	width:175px;
+}
+#settingsForm{
+	width:100%;
+	text-align: center;
+	margin-top:25px;
+}
+/*Scanner - Contacts*/
 #modifyContacts{
 	position: relative;
 }
+#modifyContacts input[type=text]{
+	max-width: 150px;
+}
 .trash{
-	background : url("../../Images/trash.png") no-repeat center center;
-	width: 25px;
-	height:25px;
-	display:inline-block;
-	vertical-align: middle;
-	border : none;
-	color : transparent;
-	font-size : 0;
-    background-color:none;
-    padding:0px;
-    text-align: center;
-    text-decoration: none;
+	background : url("../../Images/trash.png") no-repeat center center !important;
+	background-size: 25px 25px !important;
+	width: 25px !important;
+	height:25px !important;
+	display:inline-block !important;
+	vertical-align: middle !important;
+	border : none !important;
+	color : transparent !important;
+	font-size : 0 !important;
+    background-color:none !important;
+    padding:0px !important;
+    text-align: center !important;
+    text-decoration: none !important;
 }
 .cancel{
 	width: 20px;
@@ -180,15 +204,19 @@ input[type="submit"]{
 	vertical-align: middle;
 }
 .check{
-	background : url("../../Images/check.png") no-repeat center center;
-	width: 20px;
-	height:20px;
-	padding:2px;
-	display:inline-block;
-	vertical-align: middle;
-	border : none;
-	color : transparent;
-	font-size : 0
+	background : url("../../Images/check.png") no-repeat center center !important;
+	background-size: 20px 20px !important;
+	width: 20px !important;
+	height:20px !important;
+	display:inline-block !important;
+	vertical-align: middle !important;
+	border : none !important;
+	color : transparent !important;
+	font-size : 0 !important;
+    background-color:none !important;
+    padding:0px !important;
+    text-align: center !important;
+    text-decoration: none !important;
 }
 .edit{
 	width: 25px;
